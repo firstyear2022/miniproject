@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import "../styles/animations.css";
 
 const links = [
-  { name: "home", path: "/" },
+  { name: "Home", path: "/" },
   { name: "symptoms_label", path: "/symptoms" },
   { name: "awareness_label", path: "/awareness" },
 ];
