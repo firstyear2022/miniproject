@@ -16,6 +16,10 @@
   "ready_to_take_step_desc": "Explore symptoms or steps to protect your health.",
   "chatbot": {
     "title": "Emotional Support Chatbot",
+    "diagnosed": "You are not alone. It's normal to feel overwhelmed. Try talking to a doctor and lean on loved ones for support.",
+    "screening": "You can get screened at nearby clinics and hospitals. Early detection saves lives.",
+    "scared": "It's okay to feel scared. You're brave for seeking help. Talking to a mental health professional can be very helpful.",
+    "default": "I'm here with you. Please tell me more.",
     "greeting": "Hi there 💗 I'm here for emotional support. How can I help you today?",
     "btn_diagnosed": "I just got diagnosed",
     "btn_screened": "Where can I get screened?",
