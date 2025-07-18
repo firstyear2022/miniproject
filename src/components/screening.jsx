@@ -135,16 +135,16 @@ export default function ScreeningAndDiagnosisSection() {
         <div className="flex flex-col md:flex-row justify-center items-center gap-5 md:gap-6 text-center mb-14">
           {[
             {
-              age: "Ages 20–39",
-              text: "Monthly self-exams & clinical exams every 1–3 years.",
+              age: t("screening.age_20_39", "Ages 20–39"),
+              text: t("screening.age_20_39_text", "Monthly self-exams & clinical exams every 1–3 years."),
             },
             {
-              age: "Ages 40+",
-              text: "Annual mammograms and regular clinical exams.",
+              age: t("screening.age_40_plus", "Ages 40+"),
+              text: t("screening.age_40_plus_text", "Annual mammograms and regular clinical exams."),
             },
             {
-              age: "High-Risk Women",
-              text: "Early and more frequent screenings (MRI + mammogram).",
+              age: t("screening.high_risk", "High-Risk Women"),
+              text: t("screening.high_risk_text", "Early and more frequent screenings (MRI + mammogram)."),
             },
           ].map((item, index) => (
             <div
@@ -153,10 +153,10 @@ export default function ScreeningAndDiagnosisSection() {
             >
               <CalendarCheck2 className="text-pink-600 w-6 h-6 mx-auto mb-2" />
               <h4 className="text-pink-700 font-semibold mb-1">
-                {t(item.age)}
+                {item.age}
               </h4>
               <p className="text-sm sm:text-base text-gray-600">
-                {t(item.text)}
+                {item.text}
               </p>
             </div>
           ))}

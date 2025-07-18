@@ -13,6 +13,7 @@ export default function Navbar() {
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
 
   return (
     <nav
@@ -28,26 +29,75 @@ export default function Navbar() {
         <h1 className="text-xl sm:text-2xl font-bold text-white drop-shadow cursor-pointer" onClick={() => window.location.href = '/'}>
           {t("breastcare", "BreastCare")}
         </h1>
-        {/* Language Switcher */}
-        <div className="flex gap-2 items-center ml-4">
-          <button
-            onClick={() => i18n.changeLanguage("en")}
-            className="text-white/80 hover:text-white text-xs"
-          >
-            EN
-          </button>
-          <button
-            onClick={() => i18n.changeLanguage("hi")}
-            className="text-white/80 hover:text-white text-xs"
-          >
-            हि
-          </button>
-          <button
-            onClick={() => i18n.changeLanguage("kn")}
-            className="text-white/80 hover:text-white text-xs"
-          >
-            ಕ
-          </button>
+        {/* Desktop links */}
+        <div className="hidden sm:flex gap-6 items-center">
+          {links.map((link, idx) => (
+            <React.Fragment key={link.name}>
+              <Link
+                to={link.path}
+                className={`text-lg font-medium relative ${
+                  location.pathname === link.path
+                    ? "text-white"
+                    : "text-white/80 hover:text-white"
+                } transition-colors duration-300 before:content-[''] before:absolute before:w-full before:h-0.5 before:bg-white before:bottom-0 before:left-0 before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300 before:origin-center`}
+              >
+                {t(link.name)}
+              </Link>
+              {/* Insert language dropdown after awareness */}
+              {link.name === "awareness_label" && (
+                <div className="relative ml-2">
+                  <button
+                    onClick={() => setLangOpen((prev) => !prev)}
+                    className="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center text-white font-bold shadow hover:bg-pink-700 transition"
+                    aria-label="Select Language"
+                  >
+                    {/* Show current language letter */}
+                    {i18n.language === "en" && "EN"}
+                    {i18n.language === "hi" && "हि"}
+                    {i18n.language === "kn" && "ಕ"}
+                  </button>
+                  {langOpen && (
+                    <div
+                      className="absolute left-1/2 top-12 transform -translate-x-1/2 flex flex-col items-center gap-2 bg-white rounded-full shadow-lg py-2 px-4"
+                      style={{
+                        borderRadius: "50%",
+                        minWidth: "80px",
+                        zIndex: 100,
+                      }}
+                    >
+                      <button
+                        onClick={() => {
+                          i18n.changeLanguage("en");
+                          setLangOpen(false);
+                        }}
+                        className="text-pink-700 hover:bg-pink-100 rounded-full px-3 py-1 text-xs font-semibold transition"
+                      >
+                        EN
+                      </button>
+                      <button
+                        onClick={() => {
+                          i18n.changeLanguage("hi");
+                          setLangOpen(false);
+                        }}
+                        className="text-pink-700 hover:bg-pink-100 rounded-full px-3 py-1 text-xs font-semibold transition"
+                      >
+                        हि
+                      </button>
+                      <button
+                        onClick={() => {
+                          i18n.changeLanguage("kn");
+                          setLangOpen(false);
+                        }}
+                        className="text-pink-700 hover:bg-pink-100 rounded-full px-3 py-1 text-xs font-semibold transition"
+                      >
+                        ಕ
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+            </React.Fragment>
+          ))}
         </div>
         {/* Hamburger menu for mobile */}
         <button
@@ -71,22 +121,6 @@ export default function Navbar() {
             }`}
           ></span>
         </button>
-        {/* Desktop links */}
-        <div className="hidden sm:flex gap-6">
-          {links.map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              className={`text-lg font-medium relative ${
-                location.pathname === link.path
-                  ? "text-white"
-                  : "text-white/80 hover:text-white"
-              } transition-colors duration-300 before:content-[''] before:absolute before:w-full before:h-0.5 before:bg-white before:bottom-0 before:left-0 before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300 before:origin-center`}
-            >
-              {t(link.name)}
-            </Link>
-          ))}
-        </div>
       </div>
       {/* Mobile menu */}
       {menuOpen && (
@@ -105,6 +139,27 @@ export default function Navbar() {
               {t(link.name)}
             </Link>
           ))}
+          {/* Language dropdown for mobile */}
+          <div className="flex gap-2 mt-2">
+            <button
+              onClick={() => i18n.changeLanguage("en")}
+              className="text-pink-700 bg-pink-100 rounded-full px-3 py-1 text-xs font-semibold transition"
+            >
+              EN
+            </button>
+            <button
+              onClick={() => i18n.changeLanguage("hi")}
+              className="text-pink-700 bg-pink-100 rounded-full px-3 py-1 text-xs font-semibold transition"
+            >
+              हि
+            </button>
+            <button
+              onClick={() => i18n.changeLanguage("kn")}
+              className="text-pink-700 bg-pink-100 rounded-full px-3 py-1 text-xs font-semibold transition"
+            >
+              ಕ
+            </button>
+          </div>
         </div>
       )}
     </nav>

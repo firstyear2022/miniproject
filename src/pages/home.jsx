@@ -170,7 +170,6 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <RibbonAnimation />
         <motion.h1
           className="text-4xl sm:text-5xl font-bold mb-4 bg-clip-text text-transparent animate-gradient"
           style={{
@@ -201,14 +200,14 @@ export default function Home() {
           transition={{ delay: 0.4, duration: 0.5 }}
         >
           <Link
-            to="/awareness"
+            to="/symptoms"
             className="px-6 py-3 rounded-full shadow font-semibold transition bg-gradient-to-r from-pink-500 via-pink-400 to-purple-500 text-white hover:brightness-110"
             style={{
               backgroundImage:
                 "linear-gradient(90deg, #f43f5e 0%, #ec4899 25%, #a21caf 100%)",
             }}
           >
-            {t("awareness_label")}
+            {t("learn_more_label")}
           </Link>
         </motion.div>
       </motion.section>
@@ -222,7 +221,7 @@ export default function Home() {
         transition={{ duration: 1 }}
         viewport={{ once: true }}
       >
-        <RibbonAnimation />
+        {/* <RibbonAnimation /> */}
         <h2 className="text-3xl sm:text-4xl font-semibold text-pink-600 mb-4">
           {t("about_project", "About This Project")}
         </h2>
@@ -255,7 +254,7 @@ export default function Home() {
             to="/awareness"
             className="bg-pink-500 text-white px-6 py-3 rounded-full hover:bg-pink-600 transition"
           >
-            {t("awareness_label")}
+            {t("learn_more_label")}
           </Link>
         </div>
       </motion.section>

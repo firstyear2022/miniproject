@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import MythVsTruthSection from "../components/myth";
-import symptomsImage from "../assests/symptoms.png";
+import symptomsImage from "../assests/symptoms.jpg";
 
 export default function SignsAndSymptoms() {
   const { t } = useTranslation();
@@ -78,7 +78,7 @@ export default function SignsAndSymptoms() {
           {steps.map((step, idx) => (
             <motion.div
               key={idx}
-              className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300"
+              className="bg-white sm:p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.2, duration: 0.6 }}

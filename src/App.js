@@ -10,7 +10,6 @@ import './styles/animations.css';
 function App() {
   return (
     <Router>
-      <LanguageSwitcher />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
